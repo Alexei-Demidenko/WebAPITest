@@ -194,7 +194,6 @@ C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.AssemblyReference.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.AssemblyInfoInputs.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.AssemblyInfo.cs
@@ -208,3 +207,4 @@ C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.pdb
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.genruntimeconfig.cache
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.CopyComplete

@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using APIAnnouncements.Exceptions;
 using APIAnnouncements.dbo;
 using AutoMapper;
-
+using Microsoft.Extensions.Options;
+using APIAnnouncements.Options;
 
 namespace APIAnnouncements.Services
 {
@@ -17,10 +18,12 @@ namespace APIAnnouncements.Services
     {
         private AnnouncementsContext _context;
         private IMapper _mapper;
-		public AnnouncingService(AnnouncementsContext context, IMapper mapper)
+        private readonly IOptions<MaxAnnouncCountOption> _maxAnnouncCountOption;
+        public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<MaxAnnouncCountOption> maxAnnouncCountOption)
 		{
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _maxAnnouncCountOption = maxAnnouncCountOption ?? throw new ArgumentNullException(nameof(maxAnnouncCountOption));
         }
        
         public async Task<AnnoncResponse> Get(Guid Id, CancellationToken cancellationToken)
@@ -32,11 +35,18 @@ namespace APIAnnouncements.Services
        
         public async Task Create(AnnoncRequest item, CancellationToken cancellationToken)
         {
-            Announcing announcingdb = _mapper.Map<Announcing>(item);
-            announcingdb.Id = Guid.NewGuid();
+            if (_context.Set<Announcing>().Where(a => a.User.Id == item.User.Id).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
+            {
+                Announcing announcingdb = _mapper.Map<Announcing>(item);
+                announcingdb.Id = Guid.NewGuid();
 
-            _context.Announcings.Add(announcingdb);
-            await _context.SaveChangesAsync(cancellationToken);
+                _context.Announcings.Add(announcingdb);
+                await _context.SaveChangesAsync(cancellationToken);
+            }
+            else
+            {
+                throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
+            }
         }
         public async Task Update(Guid Id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
         { 

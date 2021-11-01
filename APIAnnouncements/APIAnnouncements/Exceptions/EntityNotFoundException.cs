@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace APIAnnouncements.Exceptions
 {
-	public class EntityNotFoundException: Exception
+	public class EntityNotFoundException : Exception
 	{
 		public EntityNotFoundException(string message) :base (message)
 		{
