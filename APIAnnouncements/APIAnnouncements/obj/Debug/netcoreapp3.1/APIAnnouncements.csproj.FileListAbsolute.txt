@@ -207,4 +207,4 @@ C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.pdb
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.genruntimeconfig.cache
-C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.CopyComplete
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.AssemblyReference.cache
