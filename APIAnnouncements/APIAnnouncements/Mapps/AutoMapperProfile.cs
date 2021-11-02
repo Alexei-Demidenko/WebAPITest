@@ -9,7 +9,8 @@ namespace APIAnnouncements.Mapps
 		public AutoMapperProfile()
 		{
 			CreateMap<UserRequest, User>()
-				.ForMember(x => x.Id, e => e.Ignore());
+				.ForMember(x => x.Id, e => e.Ignore())
+				.ForMember(x=>x.CreationDate, e=> e.Ignore());
 
 			CreateMap<User, UserResponse>();
 

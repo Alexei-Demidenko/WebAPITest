@@ -1,18 +1,16 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
-using AutoMapper;
 using APIAnnouncements.Context;
-using APIAnnouncements.Models;
 using APIAnnouncements.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using APIAnnouncements.Options;
 
 namespace APIAnnouncements
 {
@@ -25,7 +23,6 @@ namespace APIAnnouncements
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             string connection = Configuration.GetConnectionString("DefaultConnection");
@@ -39,6 +36,7 @@ namespace APIAnnouncements
                 Title = "APIAnnouncements" 
             }));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +62,20 @@ namespace APIAnnouncements
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @Configuration["BigPicturesDirectory"])),
+                RequestPath = new Microsoft.AspNetCore.Http.PathString("/BigPictures")
+            });
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), @Configuration["SmallPicturesDirectory"])),
+                RequestPath = new Microsoft.AspNetCore.Http.PathString("/SmallPictures")
             });
         }
     }

@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using APIAnnouncements.dbo;
-using APIAnnouncements.Models;
 using APIAnnouncements.Services;
 using Microsoft.AspNetCore.Mvc;
-
 
 namespace APIAnnouncements.Controllers
 {
@@ -15,12 +11,10 @@ namespace APIAnnouncements.Controllers
 	public class UserController : Controller
 	{
         private IUserService _userService;
-
         public UserController(IUserService userService)
         {
             _userService = userService;
-        }
-        
+        }        
 
         [HttpGet]
         public async Task<IActionResult> Get(Guid Id, CancellationToken cancellationToken)
@@ -31,7 +25,6 @@ namespace APIAnnouncements.Controllers
             {
                 return NotFound();
             }
-
             return new ObjectResult(item);
         }
 
@@ -67,7 +60,6 @@ namespace APIAnnouncements.Controllers
             {
                 return BadRequest();
             }
-
             return new ObjectResult(deletedUserItem);
         }
     }

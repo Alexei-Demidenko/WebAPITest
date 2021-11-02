@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace APIAnnouncements.Exceptions
 {
@@ -9,7 +6,6 @@ namespace APIAnnouncements.Exceptions
     {
         public  MaxAnnouncCountException(string message) : base(message)
         {
-
         }
     }
 }

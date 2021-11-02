@@ -10,6 +10,8 @@ using APIAnnouncements.dbo;
 using AutoMapper;
 using Microsoft.Extensions.Options;
 using APIAnnouncements.Options;
+using APIAnnouncements.Utils;
+using APIAnnouncements.Extensions;
 
 namespace APIAnnouncements.Services
 {
@@ -31,7 +33,40 @@ namespace APIAnnouncements.Services
             AnnoncResponse item = _mapper.Map<AnnoncResponse>(Announcingdb);
             return item;
         }
-       
+        public async Task<DataResult<AnnoncResponse>> GetObjectArray(QueryParameters queryParameters, int page, int pageSize, CancellationToken cancellationToken)
+        {
+            IQueryable<Announcing> announcingQuery = _context.Set<Announcing>();
+
+            if (!string.IsNullOrEmpty(queryParameters.SearchString))
+            {
+                announcingQuery = announcingQuery.SearchForMatches(queryParameters.SearchString);
+            }
+
+            if (queryParameters.FilterByUserId != null)
+            {
+                announcingQuery = announcingQuery.Where(w => w.User.Id == queryParameters.FilterByUserId);
+            }
+
+            if ("number".StartsWith(queryParameters.SortName.ToLower()))
+            {
+                announcingQuery = announcingQuery.GetSortBy(x => x.Number, queryParameters.SortDirection);
+            }
+            else if ("rating".StartsWith(queryParameters.SortName.ToLower()))
+            {
+                announcingQuery = announcingQuery.GetSortBy(x => x.Rating, queryParameters.SortDirection);
+            }
+            else announcingQuery = announcingQuery.GetSortBy(x => x.CreationDate, queryParameters.SortDirection);
+
+            PagedResult<AnnoncResponse> pagedResult = await announcingQuery.GetPaged<AnnoncResponse, Announcing>(page, pageSize, _mapper, cancellationToken);
+
+            DataResult<AnnoncResponse> result = new DataResult<AnnoncResponse>
+            {
+                Data = pagedResult.Result,
+                Count = pagedResult.RowCount
+            };
+
+            return result;
+        }
         public async Task Create(AnnoncRequest item, CancellationToken cancellationToken)
         {
             if (_context.Set<Announcing>().Where(a => a.User.Id == item.User.Id).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)

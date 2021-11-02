@@ -1,26 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using APIAnnouncements.dbo;
-using APIAnnouncements.Models;
 using APIAnnouncements.Services;
+using APIAnnouncements.Utils;
 using Microsoft.AspNetCore.Mvc;
+using APIAnnouncements.Services.RecaptchaService;
+using APIAnnouncements.Exceptions;
 
 namespace APIAnnouncements.Controllers
 {
 	[Route("api/[controller]")]
 	public class AnnouncingController : Controller
 	{
-        private IAnnouncService _announcService;
+        private IAnnouncService _announcService;       
+        private IRecaptchaService _recaptcha;
 
-        public AnnouncingController(IAnnouncService announcService)
+        public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
         {
             _announcService = announcService;
+            _recaptcha = recaptcha ?? throw new ArgumentNullException(nameof(recaptcha));
         }       
 
-        [HttpGet("{id}", Name = "GetAnnouncingItem")]
+        [HttpGet]
         public async Task<IActionResult> Get(Guid Id, CancellationToken cancellationToken)
         {
             AnnoncResponse AnnouncingItem = await _announcService.Get(Id, cancellationToken).ConfigureAwait(false);
@@ -33,9 +35,20 @@ namespace APIAnnouncements.Controllers
             return new ObjectResult(AnnouncingItem);
         }
 
+        [HttpGet("{page}/{pageSize}")]
+        public async Task<ActionResult> GetArray([FromQuery] QueryParameters queryParameters, int page = 1, int pageSize = 25, CancellationToken cancellationToken = default)
+        {
+            if (!ModelState.IsValid) return BadRequest();
+
+            return Ok(await _announcService.GetObjectArray(queryParameters, page, pageSize, cancellationToken));
+
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] AnnoncRequest AnnouncingItem, CancellationToken cancellationToken)
         {
+            var captchaResponse = await _recaptcha.Validate(Request.Form);
+            if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
             if (AnnouncingItem == null)
             {
                 return BadRequest();
