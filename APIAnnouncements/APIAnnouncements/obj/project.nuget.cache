@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x/Fe/xLq6i+pqQwYDFKz9lyXWJ6PJaezzm/7p/W3yxFaNNpY+Hy8E3JocvGz6wdSCeKcpfdLfM4B6RBCXfsT1g==",
+  "dgSpecHash": "VuInZlG+sX3Zta6p4mEGc3A/VlHyM2swCmo2sULfEXWL0saSokmcz9MmCnoiS1aL28WqiKINRiPnJt4CL3LtxQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
+  "projectFilePath": "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alexei\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

@@ -36,8 +36,7 @@ namespace APIAnnouncements.Services
             await _context.SaveChangesAsync(cancellationToken);
         }
         public async Task Update(Guid Id, UserRequest updatedUser, CancellationToken cancellationToken)
-        {
-             // User currentItem = Get(updatedUser.Id);
+        {            
             User userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
             if (userdb == null)
                 throw new EntityNotFoundException(nameof(userdb));

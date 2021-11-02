@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj": {}
+    "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj": {
+    "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
+        "projectUniqueName": "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
         "projectName": "APIAnnouncements",
-        "projectPath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
+        "projectPath": "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
         "packagesPath": "C:\\Users\\alexei\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\obj\\",
+        "outputPath": "D:\\WebAPITest\\WebAPITest\\APIAnnouncements\\APIAnnouncements\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
