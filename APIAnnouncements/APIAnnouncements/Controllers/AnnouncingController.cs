@@ -13,8 +13,8 @@ namespace APIAnnouncements.Controllers
 	[Route("api/[controller]")]
 	public class AnnouncingController : Controller
 	{
-        private IAnnouncService _announcService;       
-        private IRecaptchaService _recaptcha;
+        private readonly IAnnouncService _announcService;       
+        private readonly IRecaptchaService _recaptcha;
 
         public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
         {
@@ -23,16 +23,16 @@ namespace APIAnnouncements.Controllers
         }       
 
         [HttpGet]
-        public async Task<IActionResult> Get(Guid Id, CancellationToken cancellationToken)
+        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
         {
-            AnnoncResponse AnnouncingItem = await _announcService.Get(Id, cancellationToken).ConfigureAwait(false);
+            var announcingItem = await _announcService.Get(id, cancellationToken).ConfigureAwait(false);
 
-            if (AnnouncingItem == null)
+            if (announcingItem == null)
             {
                 return NotFound();
             }
 
-            return new ObjectResult(AnnouncingItem);
+            return new ObjectResult(announcingItem);
         }
 
         [HttpGet("{page}/{pageSize}")]
@@ -45,33 +45,33 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] AnnoncRequest AnnouncingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create([FromBody] AnnoncRequest announcingItem, CancellationToken cancellationToken)
         {
             var captchaResponse = await _recaptcha.Validate(Request.Form);
             if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
-            if (AnnouncingItem == null)
+            if (announcingItem == null)
             {
                 return BadRequest();
             }
-           await _announcService.Create(AnnouncingItem, cancellationToken);
-            return (IActionResult)AnnouncingItem;
+            await _announcService.Create(announcingItem, cancellationToken);
+            return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult>Update(Guid Id, [FromBody] AnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult>Update(Guid id, [FromBody] AnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
         {
             if (updatedAnnouncingItem == null)
             {
                 return BadRequest();
             }
-            await _announcService.Update(Id,updatedAnnouncingItem, cancellationToken);
+            await _announcService.Update(id,updatedAnnouncingItem, cancellationToken);
             return Ok();
         }
 
         [HttpDelete]
-        public IActionResult Delete(Guid Id, CancellationToken cancellationToken)
+        public IActionResult Delete(Guid id, CancellationToken cancellationToken)
         {
-            var deletedAnnouncingItem = _announcService.Delete(Id, cancellationToken);
+            var deletedAnnouncingItem = _announcService.Delete(id, cancellationToken);
 
             if (deletedAnnouncingItem == null)
             {

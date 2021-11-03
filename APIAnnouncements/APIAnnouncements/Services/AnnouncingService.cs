@@ -29,8 +29,8 @@ namespace APIAnnouncements.Services
        
         public async Task<AnnoncResponse> Get(Guid id, CancellationToken cancellationToken)
         {
-            Announcing Announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
-            AnnoncResponse item = _mapper.Map<AnnoncResponse>(Announcingdb);
+            var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
+            var item = _mapper.Map<AnnoncResponse>(announcingdb);
             return item;
         }
         public async Task<DataResult<AnnoncResponse>> GetObjectArray(QueryParameters queryParameters, int page, int pageSize, CancellationToken cancellationToken)
@@ -82,9 +82,9 @@ namespace APIAnnouncements.Services
                 throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
             }
         }
-        public async Task Update(Guid Id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
+        public async Task Update(Guid id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
         { 
-            var announcingdb = await _context.Announcings.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));
             _mapper.Map(updatedAnnouncing, announcingdb);

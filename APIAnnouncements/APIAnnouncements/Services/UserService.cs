@@ -35,10 +35,10 @@ namespace APIAnnouncements.Services
             _context.Users.Add(userdb);
             await _context.SaveChangesAsync(cancellationToken);
         }
-        public async Task Update(Guid Id, UserRequest updatedUser, CancellationToken cancellationToken)
+        public async Task Update(Guid id, UserRequest updatedUser, CancellationToken cancellationToken)
         {
              // User currentItem = Get(updatedUser.Id);
-            var userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            var userdb = await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (userdb == null)
                 throw new EntityNotFoundException(nameof(userdb));
             _mapper.Map(updatedUser, userdb);           
