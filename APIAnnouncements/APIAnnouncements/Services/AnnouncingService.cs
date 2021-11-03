@@ -17,8 +17,8 @@ namespace APIAnnouncements.Services
 {
     public class AnnouncingService : IAnnouncService
     {
-        private AnnouncementsContext _context;
-        private IMapper _mapper;
+        private readonly AnnouncementsContext _context;
+        private readonly IMapper _mapper;
         private readonly IOptions<MaxAnnouncCountOption> _maxAnnouncCountOption;
         public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<MaxAnnouncCountOption> maxAnnouncCountOption)
 		{
@@ -27,9 +27,9 @@ namespace APIAnnouncements.Services
             _maxAnnouncCountOption = maxAnnouncCountOption ?? throw new ArgumentNullException(nameof(maxAnnouncCountOption));
         }
        
-        public async Task<AnnoncResponse> Get(Guid Id, CancellationToken cancellationToken)
+        public async Task<AnnoncResponse> Get(Guid id, CancellationToken cancellationToken)
         {
-            Announcing Announcingdb = await _context.Announcings.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            Announcing Announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             AnnoncResponse item = _mapper.Map<AnnoncResponse>(Announcingdb);
             return item;
         }
@@ -57,9 +57,9 @@ namespace APIAnnouncements.Services
             }
             else announcingQuery = announcingQuery.GetSortBy(x => x.CreationDate, queryParameters.SortDirection);
 
-            PagedResult<AnnoncResponse> pagedResult = await announcingQuery.GetPaged<AnnoncResponse, Announcing>(page, pageSize, _mapper, cancellationToken);
+            var pagedResult = await announcingQuery.GetPaged<AnnoncResponse, Announcing>(page, pageSize, _mapper, cancellationToken);
 
-            DataResult<AnnoncResponse> result = new DataResult<AnnoncResponse>
+            var result = new DataResult<AnnoncResponse>
             {
                 Data = pagedResult.Result,
                 Count = pagedResult.RowCount
@@ -71,7 +71,7 @@ namespace APIAnnouncements.Services
         {
             if (_context.Set<Announcing>().Where(a => a.User.Id == item.User.Id).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
             {
-                Announcing announcingdb = _mapper.Map<Announcing>(item);
+                var announcingdb = _mapper.Map<Announcing>(item);
                 announcingdb.Id = Guid.NewGuid();
 
                 _context.Announcings.Add(announcingdb);
@@ -84,7 +84,7 @@ namespace APIAnnouncements.Services
         }
         public async Task Update(Guid Id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
         { 
-            Announcing announcingdb = await _context.Announcings.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            var announcingdb = await _context.Announcings.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));
             _mapper.Map(updatedAnnouncing, announcingdb);
@@ -94,9 +94,9 @@ namespace APIAnnouncements.Services
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task Delete(Guid Id, CancellationToken cancellationToken)
+        public async Task Delete(Guid id, CancellationToken cancellationToken)
         {
-            Announcing announcingdb = await _context.Announcings.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));
 

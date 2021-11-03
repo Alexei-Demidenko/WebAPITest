@@ -10,16 +10,16 @@ namespace APIAnnouncements.Controllers
 	[Route("api/[controller]")]
 	public class UserController : Controller
 	{
-        private IUserService _userService;
+        private readonly IUserService _userService;
         public UserController(IUserService userService)
         {
             _userService = userService;
         }        
 
         [HttpGet]
-        public async Task<IActionResult> Get(Guid Id, CancellationToken cancellationToken)
+        public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
         {
-            UserResponse item = await _userService.Get(Id, cancellationToken);
+            UserResponse item = await _userService.Get(id, cancellationToken);
 
             if (item == null)
             {
@@ -29,32 +29,32 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UserRequest UserItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create([FromBody] UserRequest userItem, CancellationToken cancellationToken)
         {
-            if (UserItem == null)
+            if (userItem == null)
             {
                 return BadRequest();
             }
-            await _userService.Create(UserItem, cancellationToken);
-            return (IActionResult)UserItem;
+            await _userService.Create(userItem, cancellationToken);
+            return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid Id, [FromBody] UserRequest updatedUserItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UserRequest updatedUserItem, CancellationToken cancellationToken)
         {
             if (updatedUserItem == null)
             {
                 return BadRequest();
             }
 
-           await _userService.Update(Id, updatedUserItem, cancellationToken);
+            await _userService.Update(id, updatedUserItem, cancellationToken);
             return Ok();
         }
 
         [HttpDelete]
-        public IActionResult Delete(Guid Id, CancellationToken cancellationToken)
+        public IActionResult Delete(Guid id, CancellationToken cancellationToken)
         {
-            var deletedUserItem = _userService.Delete(Id, cancellationToken);
+            var deletedUserItem = _userService.Delete(id, cancellationToken);
 
             if (deletedUserItem == null)
             {

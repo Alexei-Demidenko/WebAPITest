@@ -12,7 +12,7 @@ namespace APIAnnouncements.Services
 		Task<DataResult<AnnoncResponse>> GetObjectArray(QueryParameters queryParameters, int page,
 			int pageSize, CancellationToken cancellationToken);
 		Task Create(AnnoncRequest item, CancellationToken cancellationToken);
-		Task Update(Guid Id, AnnoncRequest item, CancellationToken cancellationToken);
-		Task Delete(Guid Id, CancellationToken cancellationToken);		
+		Task Update(Guid id, AnnoncRequest item, CancellationToken cancellationToken);
+		Task Delete(Guid id, CancellationToken cancellationToken);		
 	}
 }

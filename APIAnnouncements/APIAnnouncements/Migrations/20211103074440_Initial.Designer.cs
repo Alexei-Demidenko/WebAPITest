@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace APIAnnouncements.Migrations
 {
     [DbContext(typeof(AnnouncementsContext))]
-    [Migration("20211031091230_initial")]
-    partial class initial
+    [Migration("20211103074440_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -63,6 +63,9 @@ namespace APIAnnouncements.Migrations
 
                     b.Property<bool>("Admin")
                         .HasColumnType("boolean");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");

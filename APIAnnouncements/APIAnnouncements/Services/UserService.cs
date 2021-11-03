@@ -13,22 +13,22 @@ namespace APIAnnouncements.Services
 {
     public class UserService : IUserService
     {
-        private AnnouncementsContext _context;
-        private IMapper _mapper;
+        private readonly AnnouncementsContext _context;
+        private readonly IMapper _mapper;
 		public UserService(AnnouncementsContext context,IMapper mapper)
 		{
             _context = context?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }        
-        public async Task<UserResponse> Get(Guid Id, CancellationToken cancellationToken)
+        public async Task<UserResponse> Get(Guid id, CancellationToken cancellationToken)
         {
-            User userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
-            UserResponse item = _mapper.Map<UserResponse>(userdb);
+            var userdb = await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
+            var item = _mapper.Map<UserResponse>(userdb);
             return item;
         }        
         public async Task Create(UserRequest item, CancellationToken cancellationToken)
         {
-            User userdb= _mapper.Map<User>(item);
+            var userdb= _mapper.Map<User>(item);
             userdb.Id = Guid.NewGuid();
             userdb.CreationDate = DateTime.Now;
 
@@ -36,8 +36,9 @@ namespace APIAnnouncements.Services
             await _context.SaveChangesAsync(cancellationToken);
         }
         public async Task Update(Guid Id, UserRequest updatedUser, CancellationToken cancellationToken)
-        {            
-            User userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+        {
+             // User currentItem = Get(updatedUser.Id);
+            var userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
             if (userdb == null)
                 throw new EntityNotFoundException(nameof(userdb));
             _mapper.Map(updatedUser, userdb);           
@@ -46,14 +47,14 @@ namespace APIAnnouncements.Services
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task Delete(Guid Id, CancellationToken cancellationToken)
+        public async Task Delete(Guid id, CancellationToken cancellationToken)
         {
-            User userdb = await _context.Users.Where(u => u.Id == Id).FirstOrDefaultAsync(cancellationToken);
+            var userdb = await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (userdb == null)
                 throw new EntityNotFoundException(nameof(userdb));
            
-                _context.Users.Remove(userdb);
-                await _context.SaveChangesAsync(cancellationToken);                      
+            _context.Users.Remove(userdb);
+            await _context.SaveChangesAsync(cancellationToken);                      
         }
     }
 }

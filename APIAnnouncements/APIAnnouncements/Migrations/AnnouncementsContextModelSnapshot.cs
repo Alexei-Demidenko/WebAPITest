@@ -62,6 +62,9 @@ namespace APIAnnouncements.Migrations
                     b.Property<bool>("Admin")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
 

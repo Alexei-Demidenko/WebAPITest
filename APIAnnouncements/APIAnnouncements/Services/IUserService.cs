@@ -9,7 +9,7 @@ namespace APIAnnouncements.Services
 	{
 		Task<UserResponse> Get(Guid id, CancellationToken cancellationToken);
 		Task Create(UserRequest item, CancellationToken cancellationToken);
-		Task Update(Guid Id, UserRequest item, CancellationToken cancellationToken);
-		Task Delete(Guid Id, CancellationToken cancellationToken);
+		Task Update(Guid id, UserRequest item, CancellationToken cancellationToken);
+		Task Delete(Guid id, CancellationToken cancellationToken);
 	}
 }
