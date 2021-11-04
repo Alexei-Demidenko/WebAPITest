@@ -21,12 +21,12 @@ namespace APIAnnouncements.Services
         private readonly IMapper _mapper;
         private readonly IOptions<MaxAnnouncCountOption> _maxAnnouncCountOption;
         public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<MaxAnnouncCountOption> maxAnnouncCountOption)
-		{
+        {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
             _maxAnnouncCountOption = maxAnnouncCountOption ?? throw new ArgumentNullException(nameof(maxAnnouncCountOption));
         }
-       
+
         public async Task<AnnoncResponse> Get(Guid id, CancellationToken cancellationToken)
         {
             var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
@@ -69,10 +69,16 @@ namespace APIAnnouncements.Services
         }
         public async Task Create(AnnoncRequest item, CancellationToken cancellationToken)
         {
-            if (_context.Set<Announcing>().Where(a => a.User.Id == item.User.Id).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
+            if (_context.Users.Where(a => a.Id == item.UserId) == null)
+                throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
+            if (_context.Set<Announcing>().Where(a => a.User.Id == item.UserId).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
             {
                 var announcingdb = _mapper.Map<Announcing>(item);
+                var maxNumber = await _context.Announcings.Where(a => a.Number == Int32.MaxValue).FirstOrDefaultAsync(cancellationToken);
+                announcingdb.Number = maxNumber.Number + 1;
                 announcingdb.Id = Guid.NewGuid();
+                announcingdb.CreationDate = DateTime.Now;
+                announcingdb.ExpirationDate = DateTime.Now.AddDays(10);
 
                 _context.Announcings.Add(announcingdb);
                 await _context.SaveChangesAsync(cancellationToken);
@@ -83,7 +89,7 @@ namespace APIAnnouncements.Services
             }
         }
         public async Task Update(Guid id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
-        { 
+        {
             var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));

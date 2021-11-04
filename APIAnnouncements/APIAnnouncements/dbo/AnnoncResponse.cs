@@ -1,5 +1,6 @@
 ﻿using APIAnnouncements.Models;
 using System;
+using APIAnnouncements.Context;
 
 namespace APIAnnouncements.dbo
 {
