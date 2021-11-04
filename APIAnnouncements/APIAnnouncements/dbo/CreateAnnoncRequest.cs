@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace APIAnnouncements.dbo
 {
-    public class AnnoncRequest
+    public class CreateAnnoncRequest
     {
         //public int Number { get; set; }
         [Required(ErrorMessage = "Поля UserId является обязательным.")]

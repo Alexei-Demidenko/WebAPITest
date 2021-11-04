@@ -67,18 +67,18 @@ namespace APIAnnouncements.Services
 
             return result;
         }
-        public async Task Create(AnnoncRequest item, CancellationToken cancellationToken)
+        public async Task Create(CreateAnnoncRequest item, CancellationToken cancellationToken)
         {
             if (_context.Users.Where(a => a.Id == item.UserId) == null)
                 throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
             if (_context.Set<Announcing>().Where(a => a.User.Id == item.UserId).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
             {
                 var announcingdb = _mapper.Map<Announcing>(item);
-                var maxNumber = await _context.Announcings.Where(a => a.Number == Int32.MaxValue).FirstOrDefaultAsync(cancellationToken);
-                announcingdb.Number = maxNumber.Number + 1;
+                announcingdb.Number = _context.Set<Announcing>().Count()+1;
                 announcingdb.Id = Guid.NewGuid();
                 announcingdb.CreationDate = DateTime.Now;
                 announcingdb.ExpirationDate = DateTime.Now.AddDays(10);
+                announcingdb.UserId = item.UserId;
 
                 _context.Announcings.Add(announcingdb);
                 await _context.SaveChangesAsync(cancellationToken);
@@ -88,13 +88,12 @@ namespace APIAnnouncements.Services
                 throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
             }
         }
-        public async Task Update(Guid id, AnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
+        public async Task Update(Guid id, UpdateAnnoncRequest updatedAnnouncing, CancellationToken cancellationToken)
         {
             var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));
             _mapper.Map(updatedAnnouncing, announcingdb);
-
 
             _context.Announcings.Update(announcingdb);
             await _context.SaveChangesAsync(cancellationToken);

@@ -25,18 +25,19 @@ namespace APIAnnouncements
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
+            var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AnnouncementsContext>(options => options.UseNpgsql(connection));
             services.AddControllers();
             services.AddTransient<IAnnouncService, AnnouncingService>();
             services.AddTransient<IUserService, UserService>();
+            services.Configure<MaxAnnouncCountOption>(Configuration);
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo 
             {
                 Version = "v1",
                 Title = "APIAnnouncements" 
             }));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
+            // services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

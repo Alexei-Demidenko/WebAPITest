@@ -14,8 +14,14 @@ namespace APIAnnouncements.Mapps
 
 			CreateMap<User, UserResponse>();
 
-			CreateMap<AnnoncRequest, Announcing>()
-				.ForMember(x => x.Id, e => e.Ignore());
+			CreateMap<CreateAnnoncRequest, Announcing>()
+				.ForMember(x => x.Id, e => e.Ignore())
+                .ForMember("UserId", userId => userId.MapFrom(src => src.UserId));
+
+            CreateMap<UpdateAnnoncRequest, Announcing>()
+                .ForMember(x => x.Id, e => e.Ignore())
+                .ForMember(x => x.CreationDate, e => e.Ignore())
+                .ForMember(x => x.UserId, e => e.Ignore());
 
 			CreateMap<Announcing, AnnoncResponse>();
 		}

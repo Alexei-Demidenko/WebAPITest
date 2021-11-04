@@ -6,6 +6,7 @@ namespace APIAnnouncements.Models
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public int Number { get; set; }
+        public Guid UserId { get; set; }
         public User User { get; set; }
         public string Text { get; set; }
         public string Picture { get; set; }

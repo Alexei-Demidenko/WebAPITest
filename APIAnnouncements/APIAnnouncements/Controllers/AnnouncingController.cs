@@ -13,13 +13,14 @@ namespace APIAnnouncements.Controllers
 	[Route("api/[controller]")]
 	public class AnnouncingController : Controller
 	{
-        private readonly IAnnouncService _announcService;       
-        private readonly IRecaptchaService _recaptcha;
+        private readonly IAnnouncService _announcService;
+        // private readonly IRecaptchaService _recaptcha;
 
-        public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
+        //   public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
+        public AnnouncingController(IAnnouncService announcService)
         {
             _announcService = announcService;
-            _recaptcha = recaptcha ?? throw new ArgumentNullException(nameof(recaptcha));
+         //   _recaptcha = recaptcha ?? throw new ArgumentNullException(nameof(recaptcha));
         }       
 
         [HttpGet]
@@ -45,10 +46,10 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] AnnoncRequest announcingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create([FromBody] CreateAnnoncRequest announcingItem, CancellationToken cancellationToken)
         {
-            var captchaResponse = await _recaptcha.Validate(Request.Form);
-            if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
+          //  var captchaResponse = await _recaptcha.Validate(Request.Form);
+          //  if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
             if (announcingItem == null)
             {
                 return BadRequest();
@@ -58,7 +59,7 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult>Update(Guid id, [FromBody] AnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult>Update(Guid id, [FromBody] UpdateAnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
         {
             if (updatedAnnouncingItem == null)
             {
