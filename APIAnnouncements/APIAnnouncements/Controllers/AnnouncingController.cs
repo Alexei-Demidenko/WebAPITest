@@ -10,18 +10,17 @@ using APIAnnouncements.Exceptions;
 
 namespace APIAnnouncements.Controllers
 {
-	[Route("api/[controller]")]
-	public class AnnouncingController : Controller
-	{
+    [Route("api/[controller]")]
+    public class AnnouncingController : Controller
+    {
         private readonly IAnnouncService _announcService;
-        // private readonly IRecaptchaService _recaptcha;
+        private readonly IRecaptchaService _recaptcha;
 
-        //   public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
-        public AnnouncingController(IAnnouncService announcService)
+        public AnnouncingController(IAnnouncService announcService, IRecaptchaService recaptcha)
         {
             _announcService = announcService;
-         //   _recaptcha = recaptcha ?? throw new ArgumentNullException(nameof(recaptcha));
-        }       
+            _recaptcha = recaptcha ?? throw new ArgumentNullException(nameof(recaptcha));
+        }
 
         [HttpGet]
         public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
@@ -44,12 +43,12 @@ namespace APIAnnouncements.Controllers
             return Ok(await _announcService.GetObjectArray(queryParameters, page, pageSize, cancellationToken));
 
         }
-
+        
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateAnnoncRequest announcingItem, CancellationToken cancellationToken)
+        public async Task<ActionResult> Create([FromBody] CreateAnnoncRequest announcingItem, CancellationToken cancellationToken)
         {
-          //  var captchaResponse = await _recaptcha.Validate(Request.Form);
-          //  if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
+            var captchaResponse = await  _recaptcha.Validate(Request.Form);
+            if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
             if (announcingItem == null)
             {
                 return BadRequest();
@@ -59,13 +58,13 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult>Update(Guid id, [FromBody] UpdateAnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateAnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
         {
             if (updatedAnnouncingItem == null)
             {
                 return BadRequest();
             }
-            await _announcService.Update(id,updatedAnnouncingItem, cancellationToken);
+            await _announcService.Update(id, updatedAnnouncingItem, cancellationToken);
             return Ok();
         }
 

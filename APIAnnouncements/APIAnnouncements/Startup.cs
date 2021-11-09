@@ -11,6 +11,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using APIAnnouncements.Options;
+using APIAnnouncements.Services.RecaptchaService;
 
 namespace APIAnnouncements
 {
@@ -31,13 +32,14 @@ namespace APIAnnouncements
             services.AddTransient<IAnnouncService, AnnouncingService>();
             services.AddTransient<IUserService, UserService>();
             services.Configure<MaxAnnouncCountOption>(Configuration);
-            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo 
+            services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "APIAnnouncements" 
+                Title = "APIAnnouncements"
             }));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            // services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
+            services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
+            services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

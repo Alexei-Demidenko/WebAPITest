@@ -5,7 +5,6 @@ namespace APIAnnouncements.dbo
 {
     public class CreateAnnoncRequest
     {
-        //public int Number { get; set; }
         [Required(ErrorMessage = "Поля UserId является обязательным.")]
         public Guid UserId { get; set; }
 
@@ -20,7 +19,5 @@ namespace APIAnnouncements.dbo
         [Required(ErrorMessage = "Поля Rating является обязательным.")]
         [Range(1, 5, ErrorMessage = "Значение поля Rating должна быть в диапозоне 1-5")]
         public int Rating { get; set; }
-        //public DateTime CreationDate { get; set; }
-        //public DateTime ExpirationDate { get; set; }
     }
 }
