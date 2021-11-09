@@ -38,11 +38,10 @@ namespace APIAnnouncements
                 Title = "APIAnnouncements"
             }));
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
-            services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
+            //services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
+            //services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
