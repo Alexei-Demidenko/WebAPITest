@@ -1,0 +1,5 @@
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.AssemblyInfo.cs
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netstandard2.0\DataAccessLayer.csproj.CoreCompileInputs.cache

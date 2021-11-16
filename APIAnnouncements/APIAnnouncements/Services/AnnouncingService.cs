@@ -19,8 +19,8 @@ namespace APIAnnouncements.Services
     {
         private readonly AnnouncementsContext _context;
         private readonly IMapper _mapper;
-        private readonly IOptions<MaxAnnouncCountOption> _maxAnnouncCountOption;
-        public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<MaxAnnouncCountOption> maxAnnouncCountOption)
+        private readonly IOptions<AnnouncOption> _maxAnnouncCountOption;
+        public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<AnnouncOption> maxAnnouncCountOption)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -71,7 +71,7 @@ namespace APIAnnouncements.Services
         {
             if (_context.Users.Where(a => a.Id == item.UserId) == null)
                 throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
-            if (_context.Set<Announcing>().Where(a => a.User.Id == item.UserId).Count() < _maxAnnouncCountOption.Value.MaxAnnouncCount)
+            if (_context.Set<Announcing>().Count(a => a.User.Id == item.UserId) < _maxAnnouncCountOption.Value.MaxAnnouncCount)
             {
                 var announcingdb = _mapper.Map<Announcing>(item);
                 announcingdb.Number = _context.Set<Announcing>().Count()+1;

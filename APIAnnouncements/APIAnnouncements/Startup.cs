@@ -31,7 +31,7 @@ namespace APIAnnouncements
             services.AddControllers();
             services.AddTransient<IAnnouncService, AnnouncingService>();
             services.AddTransient<IUserService, UserService>();
-            services.Configure<MaxAnnouncCountOption>(Configuration);
+            services.Configure<AnnouncOption>(Configuration);
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
