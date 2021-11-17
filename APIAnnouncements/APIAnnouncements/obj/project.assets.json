@@ -1882,6 +1882,22 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "BusinessLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "AutoMapper": "8.0.0",
+          "DataAccessLayer": "1.0.0",
+          "Microsoft.AspNetCore.Components": "3.1.19",
+          "Microsoft.AspNetCore.Components.Web": "3.1.19"
+        },
+        "compile": {
+          "bin/placeholder/BusinessLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BusinessLayer.dll": {}
+        }
+      },
       "DataAccessLayer/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -6649,6 +6665,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "BusinessLayer/1.0.0": {
+      "type": "project",
+      "path": "../BusinessLayer/BusinessLayer.csproj",
+      "msbuildProject": "../BusinessLayer/BusinessLayer.csproj"
+    },
     "DataAccessLayer/1.0.0": {
       "type": "project",
       "path": "../DataAccessLayer/DataAccessLayer.csproj",
@@ -6659,6 +6680,7 @@
     ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
+      "BusinessLayer >= 1.0.0",
       "DataAccessLayer >= 1.0.0",
       "Microsoft.AspNetCore.StaticFiles >= 2.2.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.11",
@@ -6698,6 +6720,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\BusinessLayer\\BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\BusinessLayer\\BusinessLayer.csproj"
+            },
             "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\DataAccessLayer\\DataAccessLayer.csproj": {
               "projectPath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\DataAccessLayer\\DataAccessLayer.csproj"
             }

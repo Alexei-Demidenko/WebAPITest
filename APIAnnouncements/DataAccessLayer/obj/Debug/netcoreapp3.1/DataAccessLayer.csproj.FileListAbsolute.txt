@@ -1,5 +1,16 @@
-C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.AssemblyReference.cache
 C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
 C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
 C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\staticwebassets\DataAccessLayer.StaticWebAssets.Manifest.cache
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\staticwebassets\DataAccessLayer.StaticWebAssets.xml
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\scopedcss\bundle\DataAccessLayer.styles.css
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.RazorTargetAssemblyInfo.cache
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\alexei\Desktop\APIAnnouncements\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache

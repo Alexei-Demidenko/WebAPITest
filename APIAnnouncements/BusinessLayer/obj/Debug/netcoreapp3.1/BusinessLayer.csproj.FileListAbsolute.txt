@@ -1,0 +1,17 @@
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\staticwebassets\BusinessLayer.StaticWebAssets.Manifest.cache
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\staticwebassets\BusinessLayer.StaticWebAssets.xml
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\scopedcss\bundle\BusinessLayer.styles.css
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.RazorTargetAssemblyInfo.cache
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb

@@ -19,8 +19,8 @@ namespace APIAnnouncements.Services
     {
         private readonly AnnouncementsContext _context;
         private readonly IMapper _mapper;
-        private readonly IOptions<AnnouncOption> _maxAnnouncCountOption;
-        public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<AnnouncOption> maxAnnouncCountOption)
+        private readonly IOptions<AAnnouncOption> _maxAnnouncCountOption;
+        public AnnouncingService(AnnouncementsContext context, IMapper mapper, IOptions<AAnnouncOption> maxAnnouncCountOption)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

@@ -4,14 +4,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using APIAnnouncements.Context;
 using APIAnnouncements.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
-using APIAnnouncements.Options;
 using APIAnnouncements.Services.RecaptchaService;
+using DataAccessLayer.Context;
+using BusinessLayer.Options;
 
 namespace APIAnnouncements
 {
@@ -27,7 +27,7 @@ namespace APIAnnouncements
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AnnouncementsContext>(options => options.UseNpgsql(connection));
+            services.AddDbContext<AnnouncContext>(options => options.UseNpgsql(connection));
             services.AddControllers();
             services.AddTransient<IAnnouncService, AnnouncingService>();
             services.AddTransient<IUserService, UserService>();
