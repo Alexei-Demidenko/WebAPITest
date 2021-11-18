@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using APIAnnouncements.dbo;
-using APIAnnouncements.Services;
+using BusinessLayer.DataTransferObject.UserDTO;
+using BusinessLayer.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIAnnouncements.Controllers
@@ -19,7 +19,7 @@ namespace APIAnnouncements.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
         {
-            UserResponse item = await _userService.Get(id, cancellationToken);
+            var item = await _userService.Get(id, cancellationToken);
 
             if (item == null)
             {
@@ -29,7 +29,7 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] UserRequest userItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Create([FromBody] UserRequestDto userItem, CancellationToken cancellationToken)
         {
             if (userItem == null)
             {
@@ -40,7 +40,7 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UserRequest updatedUserItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UserRequestDto updatedUserItem, CancellationToken cancellationToken)
         {
             if (updatedUserItem == null)
             {

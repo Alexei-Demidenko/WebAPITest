@@ -1887,6 +1887,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "AutoMapper": "8.0.0",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
           "DataAccessLayer": "1.0.0",
           "Microsoft.AspNetCore.Components": "3.1.19",
           "Microsoft.AspNetCore.Components.Web": "3.1.19"
@@ -1904,7 +1905,9 @@
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.19",
           "Microsoft.AspNetCore.Components.Web": "3.1.19",
-          "Microsoft.EntityFrameworkCore": "5.0.0"
+          "Microsoft.EntityFrameworkCore": "5.0.0",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.0",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.0"
         },
         "compile": {
           "bin/placeholder/DataAccessLayer.dll": {}

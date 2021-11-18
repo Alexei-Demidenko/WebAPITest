@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using APIAnnouncements.dbo;
-using APIAnnouncements.Services;
-using APIAnnouncements.Utils;
 using Microsoft.AspNetCore.Mvc;
-using APIAnnouncements.Services.RecaptchaService;
-using APIAnnouncements.Exceptions;
+using BusinessLayer.DataTransferObject.AnnoncDTO;
+using BusinessLayer.Interfaces;
+using QueryParameters = BusinessLayer.Utils.QueryParameters;
 
 namespace APIAnnouncements.Controllers
 {
@@ -45,7 +43,7 @@ namespace APIAnnouncements.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] CreateAnnoncRequest announcingItem, CancellationToken cancellationToken)
+        public async Task<ActionResult> Create([FromBody] AnnoncCreateRequestDto announcingItem, CancellationToken cancellationToken)
         {
             //var captchaResponse = await  _recaptcha.Validate(Request.Form);
             //if (!captchaResponse.Success) throw new ReCaptchaErrorException("Ошибка ReCaptcha. Не прошел проверку.");
@@ -58,7 +56,7 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(Guid id, [FromBody] UpdateAnnoncRequest updatedAnnouncingItem, CancellationToken cancellationToken)
+        public async Task<IActionResult> Update(Guid id, [FromBody] AnnoncUpdateRequestDto updatedAnnouncingItem, CancellationToken cancellationToken)
         {
             if (updatedAnnouncingItem == null)
             {

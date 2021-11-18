@@ -12,6 +12,5 @@ C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\s
 C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\staticwebassets\BusinessLayer.StaticWebAssets.xml
 C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\scopedcss\bundle\BusinessLayer.styles.css
 C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.RazorTargetAssemblyInfo.cache
-C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
 C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
 C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb

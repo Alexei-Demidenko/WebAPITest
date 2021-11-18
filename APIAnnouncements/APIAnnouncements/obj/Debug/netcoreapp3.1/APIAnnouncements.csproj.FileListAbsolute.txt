@@ -216,6 +216,5 @@ C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
-C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.CopyComplete
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\BusinessLayer.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\BusinessLayer.pdb

@@ -1668,6 +1668,7 @@
       "BusinessLayer/1.0.0": {
         "dependencies": {
           "AutoMapper": "10.1.1",
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "DataAccessLayer": "1.0.0",
           "Microsoft.AspNetCore.Components": "3.1.19",
           "Microsoft.AspNetCore.Components.Web": "3.1.19"
@@ -1683,7 +1684,9 @@
         "dependencies": {
           "Microsoft.AspNetCore.Components": "3.1.19",
           "Microsoft.AspNetCore.Components.Web": "3.1.19",
-          "Microsoft.EntityFrameworkCore": "5.0.11"
+          "Microsoft.EntityFrameworkCore": "5.0.11",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.11",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.10"
         },
         "runtime": {
           "DataAccessLayer.dll": {}

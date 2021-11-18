@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wawy0QctmojEWBa8J6rYz5vb8F07O2yZFwseF6iB7bxdM7Aossk1OD9JBzCPcF8Fd/nH2jOoVxzA7ZE8GAGCow==",
+  "dgSpecHash": "7axgcprh+r9nZJGwyaN23kTqX6CQSkYsocNZLZJNov1DbFGI0+otxOFXcS/6UmuQVdoX7UijRiuYHK0JMcRQ2A==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\DataAccessLayer\\DataAccessLayer.csproj",
   "expectedPackageFiles": [
@@ -15,10 +15,11 @@
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.0\\microsoft.entityframeworkcore.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.0\\microsoft.entityframeworkcore.analyzers.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.21\\microsoft.entityframeworkcore.design.3.1.21.nupkg.sha512",
-    "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.21\\microsoft.entityframeworkcore.relational.3.1.21.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.0\\microsoft.entityframeworkcore.relational.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.21\\microsoft.entityframeworkcore.tools.3.1.21.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\5.0.0\\microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.caching.memory\\5.0.0\\microsoft.extensions.caching.memory.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.0\\microsoft.extensions.dependencyinjection.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
@@ -26,9 +27,12 @@
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\microsoft.jsinterop\\3.1.19\\microsoft.jsinterop.3.1.19.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\npgsql\\5.0.0\\npgsql.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.0\\npgsql.entityframeworkcore.postgresql.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "C:\\Users\\alexei\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512"
+    "C:\\Users\\alexei\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }
