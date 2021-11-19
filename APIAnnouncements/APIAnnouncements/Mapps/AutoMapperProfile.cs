@@ -3,7 +3,7 @@ using BusinessLayer.DataTransferObject.AnnoncDTO;
 using BusinessLayer.DataTransferObject.UserDTO;
 using DataAccessLayer.Models;
 
-namespace BusinessLayer.Mapps
+namespace APIAnnouncements.Mapps
 {
     public class AutoMapperProfile : Profile
     {

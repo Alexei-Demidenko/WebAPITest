@@ -1,9 +1,9 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.FileProviders;
@@ -12,6 +12,7 @@ using DataAccessLayer.Context;
 using BusinessLayer.Options;
 using BusinessLayer.Services;
 using BusinessLayer.Interfaces;
+using System.Reflection;
 
 namespace APIAnnouncements
 {
@@ -37,7 +38,13 @@ namespace APIAnnouncements
                 Version = "v1",
                 Title = "APIAnnouncements"
             }));
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(new Assembly[] {
+                typeof(Mapps.AutoMapperProfile).Assembly,
+                typeof(BusinessLayer.Mapps.AutoMapperProfile).Assembly
+            });
+
             //services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
             //services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
         }

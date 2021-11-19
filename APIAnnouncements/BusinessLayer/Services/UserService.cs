@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections.Generic;
 using DataAccessLayer.Context;
 using BusinessLayer.Interfaces;
 using System.Threading.Tasks;
@@ -8,7 +7,6 @@ using System.Threading;
 using BusinessLayer.DataTransferObject.UserDTO;
 using System.Linq;
 using BusinessLayer.Exceptions;
-using BusinessLayer.Mapps;
 using DataAccessLayer.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,8 +24,7 @@ namespace BusinessLayer.Services
         public async Task<UserResponseDto> Get(Guid id, CancellationToken cancellationToken)
         {
             var userdb = await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
-            var item = ObjectMapper.Mapper.Map<UserResponseDto>(userdb);
-           // ObjectMapper.Mapper.Map<IEnumerable<CategoryModel>>(category);
+            var item = _mapper.Map<UserResponseDto>(userdb);
             return item;
         }
         public async Task Create(UserRequestDto item, CancellationToken cancellationToken)
