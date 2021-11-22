@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Interfaces;
 using System;
+using System.Data;
 using Microsoft.Extensions.Options;
 using DataAccessLayer.Context;
 using AutoMapper;
@@ -69,23 +70,44 @@ namespace BusinessLayer.Services
         }
         public async Task Create(AnnoncCreateRequestDto item, CancellationToken cancellationToken)
         {
-            if (_context.Users.Where(a => a.Id == item.UserId) == null)
-                throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
-            if (_context.Set<Announcing>().Count(a => a.User.Id == item.UserId) < _maxAnnouncCountOption.Value.MaxAnnouncCount)
+            await using (var transaction = _context.Database.BeginTransaction(IsolationLevel.Serializable))
             {
-                var announcingdb = _mapper.Map<Announcing>(item);
-                announcingdb.Number = _context.Set<Announcing>().Count() + 1;
-                announcingdb.Id = Guid.NewGuid();
-                announcingdb.CreationDate = DateTime.Now;
-                announcingdb.ExpirationDate = DateTime.Now.AddDays(10);
-                announcingdb.UserId = item.UserId;
+                try
+                {
+                    if (_context.Users.Where(a => a.Id == item.UserId) == null)
+                    {
+                        throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
+                    }
 
-                _context.Announcings.Add(announcingdb);
-                await _context.SaveChangesAsync(cancellationToken);
-            }
-            else
-            {
-                throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
+                    if (_context.Set<Announcing>().Count(a => a.User.Id == item.UserId) >
+                        _maxAnnouncCountOption.Value.MaxAnnouncCount)
+                    {
+                        throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
+                    }
+
+                    var announcingdb = _mapper.Map<Announcing>(item);
+                    announcingdb.Number = _context.Set<Announcing>().Count() + 1;
+                    announcingdb.Id = Guid.NewGuid();
+                    announcingdb.CreationDate = DateTime.Now;
+                    announcingdb.ExpirationDate = DateTime.Now.AddDays(10);
+                    announcingdb.UserId = item.UserId;
+
+                    await _context.Announcings.AddAsync(announcingdb);
+                    await _context.SaveChangesAsync(cancellationToken);
+                    await transaction.CommitAsync(cancellationToken);
+                }
+                catch (NotExistUsertException)
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                }
+                catch (MaxAnnouncCountException)
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                }
+                catch (Exception)
+                {
+                    await transaction.RollbackAsync(cancellationToken);
+                }
             }
         }
         public async Task Update(Guid id, AnnoncUpdateRequestDto updatedAnnouncing, CancellationToken cancellationToken)

@@ -45,11 +45,11 @@ namespace BusinessLayer.Extensions
         public static IQueryable<T> SearchForMatches<T>(this IQueryable<T> objects, string searchString) where T : Announcing
         {
             objects = objects.Where(s =>
-                EF.Functions.Like(s.Text, $"%{searchString}%") ||
-                EF.Functions.Like(s.User.Name, $"%{searchString}%") ||
-                EF.Functions.Like(s.Number.ToString(), $"%{searchString}%") ||
-                EF.Functions.Like(s.Rating.ToString(), $"%{searchString}%") ||
-                EF.Functions.Like(s.CreationDate.ToString(), $"%{searchString}%")
+                EF.Functions.ILike(s.Text, $"%{searchString}%") ||
+                EF.Functions.ILike(s.User.Name, $"%{searchString}%") ||
+                EF.Functions.ILike(s.Number.ToString(), $"%{searchString}%") ||
+                EF.Functions.ILike(s.Rating.ToString(), $"%{searchString}%") ||
+                EF.Functions.ILike(s.CreationDate.ToString(), $"%{searchString}%")
             );
             return objects;
         }
