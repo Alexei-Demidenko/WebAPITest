@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Extensions
 {
-	public static class QueryableExtension
+    public static class QueryableExtension
     {
         public static async Task<PagedResult<T>> GetPaged<T, TKey>(this IQueryable<TKey> objects, int page, int pageSize,
             IMapper mapper, CancellationToken cancellationToken) where T : class where TKey : class
@@ -19,8 +19,12 @@ namespace BusinessLayer.Extensions
             {
                 CurrentPage = page,
                 PageSize = pageSize,
-                RowCount = objects.Count()
+                // RowCount = objects.Count()
             };
+            await Task.Run(() =>
+            {
+                pagedResult.RowCount = objects.Count();
+            }, cancellationToken);
 
             var pageCount = (double)pagedResult.RowCount / pageSize;
             pagedResult.PageCount = (int)Math.Ceiling(pageCount);

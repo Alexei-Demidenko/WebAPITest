@@ -14,7 +14,6 @@ using BusinessLayer.Utils;
 using DataAccessLayer.Models;
 using BusinessLayer.Extensions;
 using BusinessLayer.Exceptions;
-
 namespace BusinessLayer.Services
 {
     public class AnnouncService : IAnnouncService
@@ -79,8 +78,12 @@ namespace BusinessLayer.Services
                         throw new NotExistUsertException("Не сущесвует пользователя с таким ID.");
                     }
 
-                    if (_context.Set<Announcing>().Count(a => a.User.Id == item.UserId) >
-                        _maxAnnouncCountOption.Value.MaxAnnouncCount)
+                    var maxAnnonc=0;
+                    await Task.Run(() => {
+                        maxAnnonc = _context.Set<Announcing>().Count(a => a.User.Id == item.UserId);
+                    }, cancellationToken);
+
+                    if (maxAnnonc > _maxAnnouncCountOption.Value.MaxAnnouncCount)
                     {
                         throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
                     }
