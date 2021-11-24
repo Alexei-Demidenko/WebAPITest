@@ -39,7 +39,7 @@ namespace BusinessLayer.Services
 
             if (!string.IsNullOrEmpty(queryParameters.SearchString))
             {
-                announcingQuery = announcingQuery.SearchForMatches(queryParameters.SearchString);
+                announcingQuery = announcingQuery.SearchForMatches(a=>a.Text,queryParameters.SearchString);
             }
 
             if (queryParameters.FilterByUserId != null)

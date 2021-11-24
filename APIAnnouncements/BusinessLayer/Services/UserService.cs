@@ -38,7 +38,7 @@ namespace BusinessLayer.Services
         }
         public async Task Update(Guid id, UserRequestDto updatedUser, CancellationToken cancellationToken)
         {
-            // User currentItem = Get(updatedUser.Id);
+            // Users currentItem = Get(updatedUser.Id);
             var userdb = await _context.Users.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (userdb == null)
                 throw new EntityNotFoundException(nameof(userdb));

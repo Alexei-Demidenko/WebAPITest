@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using BusinessLayer.DataTransferObject.UserDTO;
 using BusinessLayer.Interfaces;
-using DataAccessLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APIAnnouncements.Controllers

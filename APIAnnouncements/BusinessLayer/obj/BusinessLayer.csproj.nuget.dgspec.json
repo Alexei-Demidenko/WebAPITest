@@ -62,6 +62,10 @@
             "Microsoft.AspNetCore.Components.Web": {
               "target": "Package",
               "version": "[3.1.19, )"
+            },
+            "NinjaNye.SearchExtensions": {
+              "target": "Package",
+              "version": "[3.0.1, )"
             }
           },
           "imports": [
