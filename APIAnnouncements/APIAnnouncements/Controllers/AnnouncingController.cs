@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +53,13 @@ namespace APIAnnouncements.Controllers
             {
                 return BadRequest();
             }
+
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(announcingItem, new ValidationContext(announcingItem), results, true))
+            {
+                return BadRequest(results);
+            }
+
             await _announcService.Create(announcingItem, cancellationToken);
             return Ok();
         }
@@ -62,6 +71,13 @@ namespace APIAnnouncements.Controllers
             {
                 return BadRequest();
             }
+
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(updatedAnnouncingItem, new ValidationContext(updatedAnnouncingItem), results, true))
+            {
+                return BadRequest(results);
+            }
+
             await _announcService.Update(id, updatedAnnouncingItem, cancellationToken);
             return Ok();
         }

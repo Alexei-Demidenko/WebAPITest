@@ -1161,7 +1161,7 @@
           "lib/netstandard1.3/System.ComponentModel.dll": {}
         }
       },
-      "System.ComponentModel.Annotations/5.0.0": {
+      "System.ComponentModel.Annotations/6.0.0-preview.4.21253.7": {
         "type": "package",
         "compile": {
           "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {}
@@ -2498,7 +2498,8 @@
           "DataAccessLayer": "1.0.0",
           "Microsoft.AspNetCore.Components": "3.1.19",
           "Microsoft.AspNetCore.Components.Web": "3.1.19",
-          "NinjaNye.SearchExtensions": "3.0.1"
+          "NinjaNye.SearchExtensions": "3.0.1",
+          "System.ComponentModel.Annotations": "6.0.0-preview.4.21253.7"
         },
         "compile": {
           "bin/placeholder/BusinessLayer.dll": {}
@@ -4373,10 +4374,10 @@
         "system.componentmodel.nuspec"
       ]
     },
-    "System.ComponentModel.Annotations/5.0.0": {
-      "sha512": "dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+    "System.ComponentModel.Annotations/6.0.0-preview.4.21253.7": {
+      "sha512": "h0eWBYUk1rLI31AAmLMgmVzy6UBMUBvRfAqB9VH+O8pMT5GBFpBJoTEIdhBfzcn7VS+aPPDzpLlASHXdjt2qXQ==",
       "type": "package",
-      "path": "system.componentmodel.annotations/5.0.0",
+      "path": "system.componentmodel.annotations/6.0.0-preview.4.21253.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -4457,10 +4458,8 @@
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
         "ref/xamarinwatchos10/_._",
-        "system.componentmodel.annotations.5.0.0.nupkg.sha512",
-        "system.componentmodel.annotations.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "system.componentmodel.annotations.6.0.0-preview.4.21253.7.nupkg.sha512",
+        "system.componentmodel.annotations.nuspec"
       ]
     },
     "System.ComponentModel.Primitives/4.3.0": {
@@ -8268,7 +8267,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
       "NinjaNye.SearchExtensions >= 3.0.1",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.10",
-      "Swashbuckle.AspNetCore >= 6.2.3"
+      "Swashbuckle.AspNetCore >= 6.2.3",
+      "System.ComponentModel.Annotations >= 6.0.0-preview.4.21253.7"
     ]
   },
   "packageFolders": {
@@ -8354,6 +8354,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.2.3, )"
+          },
+          "System.ComponentModel.Annotations": {
+            "target": "Package",
+            "version": "[6.0.0-preview.4.21253.7, )"
           }
         },
         "imports": [

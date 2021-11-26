@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3uoQbBcNT8rmqr/66XhQpUxXGANvwol5toYTfKRaAJAtreO854118IncWyny5xkif1y1/srUR9ro8gT5XqxBag==",
+  "dgSpecHash": "ySypPVq1yS2I3Wd9HmW8i5JLXXr07S1fI/+j7rYh8l4s3f4aqhBX3jKkhkEC5TtYtNAXP/rTCS4gFgCf1EA15Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\APIAnnouncements\\APIAnnouncements.csproj",
   "expectedPackageFiles": [
@@ -89,7 +89,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
-    "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel.annotations\\6.0.0-preview.4.21253.7\\system.componentmodel.annotations.6.0.0-preview.4.21253.7.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.componentmodel.primitives\\4.3.0\\system.componentmodel.primitives.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",

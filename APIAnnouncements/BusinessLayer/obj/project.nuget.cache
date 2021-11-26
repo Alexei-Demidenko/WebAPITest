@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ps/LzW4Ae9fw2JICpeIyJOHzxeFUwMCtYtZUTVrsm2e5ESfKCO16vFiyRpdqqbTuLQwBDl5Gd6Fz/ALnu5W4Hg==",
+  "dgSpecHash": "gHH7DYjgugyAfQsKbf9wnHmgI4on/1+6w8FSA8TGwu5U7xzPxFBm9tmJBlx9hx8XyT6yU9XImiQDILyEtaSORA==",
   "success": true,
   "projectFilePath": "C:\\Users\\alexei\\Desktop\\APIAnnouncements\\BusinessLayer\\BusinessLayer.csproj",
   "expectedPackageFiles": [
@@ -55,7 +55,7 @@
     "C:\\Users\\alexei\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
-    "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\alexei\\.nuget\\packages\\system.componentmodel.annotations\\6.0.0-preview.4.21253.7\\system.componentmodel.annotations.6.0.0-preview.4.21253.7.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\alexei\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.0\\system.diagnostics.diagnosticsource.5.0.0.nupkg.sha512",

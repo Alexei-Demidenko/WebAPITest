@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
 using BusinessLayer.DataTransferObject.UserDTO;
@@ -35,6 +37,13 @@ namespace APIAnnouncements.Controllers
             {
                 return BadRequest();
             }
+
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(userItem, new ValidationContext(userItem), results, true))
+            {
+                return BadRequest(results);
+            }
+
             await _userService.Create(userItem, cancellationToken);
             return Ok();
         }
@@ -45,6 +54,12 @@ namespace APIAnnouncements.Controllers
             if (updatedUserItem == null)
             {
                 return BadRequest();
+            }
+
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(updatedUserItem, new ValidationContext(updatedUserItem), results, true))
+            {
+                return BadRequest(results);
             }
 
             await _userService.Update(id, updatedUserItem, cancellationToken);
