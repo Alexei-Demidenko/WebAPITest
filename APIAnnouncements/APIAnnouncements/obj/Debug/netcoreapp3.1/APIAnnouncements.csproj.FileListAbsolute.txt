@@ -198,7 +198,6 @@ C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.AssemblyInfoInputs.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.AssemblyInfo.cs
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.CoreCompileInputs.cache
-C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\staticwebassets\APIAnnouncements.StaticWebAssets.Manifest.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\staticwebassets\APIAnnouncements.StaticWebAssets.xml
@@ -301,4 +300,8 @@ H:\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.dl
 H:\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.pdb
 H:\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.genruntimeconfig.cache
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\NinjaNye.SearchExtensions.dll
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.csproj.CopyComplete
+C:\Users\alexei\Desktop\APIAnnouncements\APIAnnouncements\obj\Debug\netcoreapp3.1\APIAnnouncements.MvcApplicationPartsAssemblyInfo.cs

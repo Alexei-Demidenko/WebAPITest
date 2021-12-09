@@ -14,5 +14,6 @@ namespace DataAccessLayer.Models
         public int Rating { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime ExpirationDate { get; set; }
+        public bool IsDeleted { get; set; } = false;
     }
 }

@@ -14,7 +14,7 @@ namespace BusinessLayer.Services
 {
     public class UserService : IUserService
     {
-        private readonly AnnouncContext _context;
+        public readonly AnnouncContext _context;
         private readonly IMapper _mapper;
         public UserService(AnnouncContext context, IMapper mapper)
         {

@@ -13,6 +13,8 @@ using BusinessLayer.Options;
 using BusinessLayer.Services;
 using BusinessLayer.Interfaces;
 using System.Reflection;
+using BusinessLayer.Services.BackgroundTasks;
+using BusinessLayer.Utils;
 
 namespace APIAnnouncements
 {
@@ -45,6 +47,13 @@ namespace APIAnnouncements
                 typeof(BusinessLayer.Mapps.AutoMapperProfile).Assembly
             });
 
+            services.AddSingleton<IBackgroundDeleteAnnounc>(new BackgroundDeleteAnnounc()
+            {
+                Timeout = TimeSpan.FromSeconds(30),
+                Frequency = TimeSpan.FromSeconds(86400000D)
+            });
+
+            services.AddHostedService<BackgroundDeleteAnnouncService>();
             //services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
             //services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
         }

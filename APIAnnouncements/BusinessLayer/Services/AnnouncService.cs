@@ -83,7 +83,7 @@ namespace BusinessLayer.Services
                         maxAnnonc = _context.Set<Announcing>().Count(a => a.User.Id == item.UserId);
                     }, cancellationToken);
 
-                    if (maxAnnonc > _maxAnnouncCountOption.Value.MaxAnnouncCount)
+                    if (maxAnnonc >= _maxAnnouncCountOption.Value.MaxAnnouncCount)
                     {
                         throw new MaxAnnouncCountException("Достигнуто максимальное количество объявлений!");
                     }
@@ -105,7 +105,7 @@ namespace BusinessLayer.Services
                 }
                 catch (MaxAnnouncCountException)
                 {
-                    await transaction.RollbackAsync(cancellationToken);
+                   await transaction.RollbackAsync(cancellationToken);
                 }
                 catch (Exception)
                 {
@@ -123,14 +123,16 @@ namespace BusinessLayer.Services
             _context.Announcings.Update(announcingdb);
             await _context.SaveChangesAsync(cancellationToken);
         }
-        public async Task Delete(Guid id, CancellationToken cancellationToken)
+        public async Task<Guid> Delete(Guid id, CancellationToken cancellationToken)
         {
             var announcingdb = await _context.Announcings.Where(u => u.Id == id).FirstOrDefaultAsync(cancellationToken);
             if (announcingdb == null)
                 throw new EntityNotFoundException(nameof(announcingdb));
 
-            _context.Announcings.Remove(announcingdb);
+            announcingdb.IsDeleted = true;
+            // _context.Announcings.Remove(announcingdb);
             await _context.SaveChangesAsync(cancellationToken);
+            return announcingdb.Id;
         }
     }
 }

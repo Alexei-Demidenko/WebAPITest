@@ -13,6 +13,6 @@ namespace BusinessLayer.Interfaces
             int pageSize, CancellationToken cancellationToken);
         Task Create(AnnoncCreateRequestDto item, CancellationToken cancellationToken);
         Task Update(Guid id, AnnoncUpdateRequestDto item, CancellationToken cancellationToken);
-        Task Delete(Guid id, CancellationToken cancellationToken);
+        Task<Guid> Delete(Guid id, CancellationToken cancellationToken);
     }
 }

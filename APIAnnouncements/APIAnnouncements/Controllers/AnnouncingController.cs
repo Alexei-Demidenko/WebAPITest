@@ -83,9 +83,9 @@ namespace APIAnnouncements.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(Guid id, CancellationToken cancellationToken)
+        public async Task<ActionResult> Delete(Guid id, CancellationToken cancellationToken)
         {
-            var deletedAnnouncingItem = _announcService.Delete(id, cancellationToken);
+            var deletedAnnouncingItem = await _announcService.Delete(id, cancellationToken);
 
             if (deletedAnnouncingItem == null)
             {
