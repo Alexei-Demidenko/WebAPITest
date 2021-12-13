@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Services.BackgroundTasks
+namespace BusinessLayer.Services
 {
     public class BackgroundDeleteAnnouncService : BackgroundService
     {

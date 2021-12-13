@@ -30,3 +30,4 @@ H:\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.RazorTar
 H:\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
 H:\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
 H:\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\alexei\Desktop\APIAnnouncements\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete

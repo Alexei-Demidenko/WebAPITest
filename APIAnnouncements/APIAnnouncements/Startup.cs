@@ -13,7 +13,6 @@ using BusinessLayer.Options;
 using BusinessLayer.Services;
 using BusinessLayer.Interfaces;
 using System.Reflection;
-using BusinessLayer.Services.BackgroundTasks;
 using BusinessLayer.Utils;
 
 namespace APIAnnouncements
@@ -53,8 +52,8 @@ namespace APIAnnouncements
             services.AddHostedService<BackgroundDeleteAnnouncService>();
             services.AddSingleton<IBackgroundDeleteSettings>(new BackgroundDeleteSettings()
             {
-                Timeout = TimeSpan.FromSeconds(15),
-                Frequency = TimeSpan.FromSeconds(86400000D)
+                Timeout = TimeSpan.FromSeconds(Configuration.GetValue<double>("BackgroundSettings:Timeout")),
+                Frequency = TimeSpan.FromSeconds(Configuration.GetValue<double>("BackgroundSettings:Frequency"))
             });
 
             //services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
