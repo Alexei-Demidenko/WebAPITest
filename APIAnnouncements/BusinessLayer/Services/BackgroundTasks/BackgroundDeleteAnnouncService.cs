@@ -1,8 +1,9 @@
 ﻿using BusinessLayer.Interfaces;
 using DataAccessLayer.Context;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Net.NetworkInformation;
+using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,28 +11,46 @@ namespace BusinessLayer.Services.BackgroundTasks
 {
     public class BackgroundDeleteAnnouncService : BackgroundService
     {
-        private readonly AnnouncContext _context;
-        private readonly IBackgroundDeleteAnnounc BackgroundDeleteAnnounc;
-        public BackgroundDeleteAnnouncService(IBackgroundDeleteAnnounc backgroundDeleteAnnounc)
+        private readonly IServiceProvider _serviceProvider;
+        private readonly IBackgroundDeleteSettings _backgroundDeleteAnnounc;
+        public BackgroundDeleteAnnouncService(IBackgroundDeleteSettings backgroundDeleteAnnounc, IServiceProvider serviceProvider)
         {
-           
-            BackgroundDeleteAnnounc = backgroundDeleteAnnounc;
-            //_context = context ?? throw new ArgumentNullException(nameof(context));
+
+            _backgroundDeleteAnnounc = backgroundDeleteAnnounc;
+            _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
         protected async override Task ExecuteAsync(CancellationToken stoppingToken)
         {
-
             while (!stoppingToken.IsCancellationRequested)
             {
-                await Task.Delay(BackgroundDeleteAnnounc.Timeout, stoppingToken);
+                await Task.Delay(_backgroundDeleteAnnounc.Timeout, stoppingToken);
 
-                await BackgroundDeleteAnnounc.AsDelete();
+                using var scope = _serviceProvider.CreateScope();
+                var _context = scope.ServiceProvider.GetRequiredService<AnnouncContext>();
+                var annoncIsDelete = _context.Announcings.Where(a => (a.ExpirationDate < DateTime.Now.AddDays(-10) && a.IsDeleted == false));
+                if (annoncIsDelete != null)
+                {
+                    foreach (var _annonc in annoncIsDelete)
+                    {
+                        _annonc.IsDeleted = true;
+                    }
+                }
 
-                await Task.Delay(BackgroundDeleteAnnounc.Frequency, stoppingToken);
+                var annoncDelete = _context.Announcings.Where(a => (a.ExpirationDate < DateTime.Now.AddDays(-41) && a.IsDeleted == true));
+                if (annoncDelete != null)
+                {
+                    foreach (var _annonc in annoncDelete)
+                    {
+                        _context.Announcings.Remove(_annonc);
+                    }
+                }
+
+                await _context.SaveChangesAsync(stoppingToken);
+                await Task.Delay(_backgroundDeleteAnnounc.Frequency, stoppingToken);
             }
         }
         public async override Task StopAsync(CancellationToken cancellationToken)
-        {          
+        {
             await base.StopAsync(cancellationToken);
         }
     }

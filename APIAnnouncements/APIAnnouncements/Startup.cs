@@ -30,10 +30,13 @@ namespace APIAnnouncements
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AnnouncContext>(options => options.UseNpgsql(connection));
+            services.AddDbContext<AnnouncContext>(options => {options.UseNpgsql(connection);
+        },
+                ServiceLifetime.Singleton
+            );           
             services.AddControllers();
             services.AddTransient<IAnnouncService, AnnouncService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserService, UserService>();           
             services.Configure<AnnouncOption>(Configuration);
             services.AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo
             {
@@ -47,13 +50,13 @@ namespace APIAnnouncements
                 typeof(BusinessLayer.Mapps.AutoMapperProfile).Assembly
             });
 
-            services.AddSingleton<IBackgroundDeleteAnnounc>(new BackgroundDeleteAnnounc()
+            services.AddHostedService<BackgroundDeleteAnnouncService>();
+            services.AddSingleton<IBackgroundDeleteSettings>(new BackgroundDeleteSettings()
             {
-                Timeout = TimeSpan.FromSeconds(30),
+                Timeout = TimeSpan.FromSeconds(15),
                 Frequency = TimeSpan.FromSeconds(86400000D)
             });
 
-            services.AddHostedService<BackgroundDeleteAnnouncService>();
             //services.Configure<ReCaptchaOptions>(Configuration.GetSection("ReCaptcha"));
             //services.AddHttpClient<IRecaptchaService, GoogleRecaptchaService>();
         }
